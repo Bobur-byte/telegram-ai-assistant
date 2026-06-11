@@ -31,10 +31,6 @@ if not BOT_TOKEN:
 if not OPENROUTER_API_KEY:
     raise ValueError("OPENROUTER_API_KEY topilmadi")
 
-client = OpenAI(
-    api_key=OPENROUTER_API_KEY,
-    base_url="https://openrouter.ai/api/v1"
-)
 
 app_flask = Flask(__name__)
 
