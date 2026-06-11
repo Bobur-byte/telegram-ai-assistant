@@ -30,18 +30,18 @@ client = OpenAI(
     base_url="https://openrouter.ai/api/v1"
 )
 
-app = Flask('')
+app_flask = Flask(__name__)
 
-@app.route('/')
+@app_flask.route("/")
 def home():
-    return "Bot 24/7 faol holatda!"
+    return "Bot ishlayapti!"
 
-def run():
-    app.run(host='0.0.0.0', port=8080)
+def run_web():
+    port = int(os.environ.get("PORT", 8080))
+    app_flask.run(host="0.0.0.0", port=port)
 
 def keep_alive():
-    t = Thread(target=run)
-    t.start()
+    Thread(target=run_web).start()
 
 def save_user(user):
     conn = sqlite3.connect("bot.db")
