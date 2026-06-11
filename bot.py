@@ -1,5 +1,7 @@
 import os
 import sqlite3
+from threading import Thread          
+from flask import Flask             
 from dotenv import load_dotenv
 from openai import OpenAI
 
@@ -27,6 +29,19 @@ client = OpenAI(
     api_key=OPENROUTER_API_KEY,
     base_url="https://openrouter.ai/api/v1"
 )
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot 24/7 faol holatda!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
 
 def save_user(user):
     conn = sqlite3.connect("bot.db")
