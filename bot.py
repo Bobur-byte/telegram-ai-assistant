@@ -484,6 +484,9 @@ Har doim o'zbek tilida javob ber.
             f"❌ Xatolik:\n{str(e)}"
         )
 
+if __name__ == "__main__":
+    keep_alive()
+    main()
 
 def main():
 
