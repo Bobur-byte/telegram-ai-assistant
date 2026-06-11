@@ -82,6 +82,10 @@ def log_usage(user_id, feature):
 
 user_histories = {}
 
+if __name__ == "__main__":
+    init_db()
+    keep_alive()
+    main()
 
 
 
