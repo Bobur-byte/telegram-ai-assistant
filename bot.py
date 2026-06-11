@@ -105,10 +105,7 @@ def log_usage(user_id, feature):
 
 user_histories = {}
 
-if __name__ == "__main__":
-    init_db()
-    keep_alive()
-    main()
+
 
 
 
@@ -513,9 +510,6 @@ Har doim o'zbek tilida javob ber.
             f"❌ Xatolik:\n{str(e)}"
         )
 
-if __name__ == "__main__":
-    keep_alive()
-    main()
 
 def main():
 
@@ -540,8 +534,8 @@ def main():
     )
 
     app.add_handler(
-    MessageHandler(filters.COMMAND, unknown)
-)
+        MessageHandler(filters.COMMAND, unknown)
+    )
 
     print("🚀 Bot ishga tushdi...")
 
