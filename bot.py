@@ -24,6 +24,29 @@ client = OpenAI(
     api_key=OPENROUTER_API_KEY,
     base_url="https://openrouter.ai/api/v1"
 )
+def init_db():
+    conn = sqlite3.connect("bot.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS users(
+        telegram_id INTEGER PRIMARY KEY,
+        username TEXT,
+        first_name TEXT
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS usage_logs(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        telegram_id INTEGER,
+        feature TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+
+    conn.commit()
+    conn.close()
 
 if not BOT_TOKEN:
     raise ValueError("BOT_TOKEN topilmadi")
